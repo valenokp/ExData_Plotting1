@@ -1,8 +1,13 @@
-# set working dir
-	setwd("D:/GitRepos/ExData_Plotting1")
-# read in data
-	A = read.table("household_power_consumption.txt",header=TRUE,sep=";",
-		na.strings="?",nrows=2075259)
+### WARNING: the code for downloading file will work if
+### capabilities("libcurl") == TRUE
+	capabilities("libcurl")
+# all files are saved into the working dir
+	dr = getwd()
+# download data
+	URL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+	download.file(URL,paste(dr,"Z.zip",sep="/"),method="libcurl")
+	temp = unzip("C:/Users/Anastasija/Desktop/Z.zip",list=FALSE)
+	A = read.table(temp,header=TRUE,sep=";",na.strings="?",nrows=2075259)
 # format dates to yyyy-mm-dd
 	A$Date = as.Date(A$Date,format="%d/%m/%Y")
 # leave only needed dates
