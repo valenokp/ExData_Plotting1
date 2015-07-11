@@ -6,7 +6,7 @@
 # download data
 	URL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 	download.file(URL,paste(dr,"Z.zip",sep="/"),method="libcurl")
-	temp = unzip("C:/Users/Anastasija/Desktop/Z.zip",list=FALSE)
+	temp = unzip(paste(dr,"Z.zip",sep="/"),list=FALSE)
 	A = read.table(temp,header=TRUE,sep=";",na.strings="?",nrows=2075259)
 # format dates to yyyy-mm-dd
 	A$Date = as.Date(A$Date,format="%d/%m/%Y")
